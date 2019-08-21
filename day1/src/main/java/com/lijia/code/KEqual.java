@@ -6,7 +6,13 @@ package com.lijia.code;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test4 {
+/**
+ * 有一个n边形（P0,P1,P2...Pn），每一边皆为垂直或者水平，现在给定数值k，
+		以P0为起点，将n边形的周长分成k段，每一段等长，请打印出所有的k等分点的坐标。
+ * @author tawalisa@163.com
+ *
+ */
+public class KEqual {
 
 	public static void main(String[] args) {
 		List list = new ArrayList();
@@ -18,8 +24,6 @@ public class Test4 {
 		kEqual(list,5);
 	}
 	/**
-		有一个n边形（P0,P1,P2...Pn），每一边皆为垂直或者水平，现在给定数值k，
-		以P0为起点，将n边形的周长分成k段，每一段等长，请打印出所有的k等分点的坐标。
 	 * @param points
 	 * @return
 	 */
