@@ -25,7 +25,7 @@ public class WaterVolume {
 		int highR = 0;
 		for (int i = 1; i < is.length; i++) {
 			if (highL >= highR || i >= highR) {
-				highR = findRightHigh(i, is);
+				highR = findRightHigh(i,highL, is);
 				if (highR < 0) {
 					return sum;
 				}
@@ -37,7 +37,7 @@ public class WaterVolume {
 					if (is[highR] >= is[highL]) {
 						highL = highR;
 					}
-					highR = findRightHigh(i, is);
+					highR = findRightHigh(i,highL, is);
 					if (highR < 0) {
 						return sum;
 					}
@@ -49,11 +49,18 @@ public class WaterVolume {
 		return sum;
 	}
 
-	private static int findRightHigh(int start, int[] is) {
+	/**
+	 * 
+	 * @param start
+	 * @param highL
+	 * @param is
+	 * @return
+	 */
+	private static int findRightHigh(int start, int highL,int[] is) {
 		int ret = -1;
 		int currentMax = -1;
 		for (int i = start + 1; i < is.length; i++) {
-			if (is[i] >= is[start]) {
+			if (is[i] >= is[highL]) {
 				return i;
 			}
 			if (is[i] > currentMax) {
