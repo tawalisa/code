@@ -39,20 +39,31 @@ public class CallableDemo {
     static class Factory<T>{
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         List<Future<ProductMode>> proceess(int count){
-
             List<Future<ProductMode>> retu = new ArrayList();
+            List<Callable> list = new ArrayList();
+
             for (int i = 0; i < count; i++) {
                 final int finalI = i;
-                retu.add(executorService.submit(()->{
+                list.add(()->{
                     System.out.println("====================");
                     Thread.sleep(1000);
                     ProductMode mode = new ProductMode();
                     mode.setName("name"+finalI);
                     mode.setPrice(finalI);
                     return mode;
-                }));
+                });
+//
+//                executorService.submit(()->{
+//                    System.out.println("====================");
+//                    Thread.sleep(1000);
+//                    ProductMode mode = new ProductMode();
+//                    mode.setName("name"+finalI);
+//                    mode.setPrice(finalI);
+//                    return mode;
+//                });
             }
             System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            list.stream().forEach(callable -> retu.add(executorService.submit(callable)));
             return retu;
         }
 
