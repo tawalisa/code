@@ -45,22 +45,13 @@ public class CallableDemo {
             for (int i = 0; i < count; i++) {
                 final int finalI = i;
                 list.add(()->{
-                    System.out.println("====================");
                     Thread.sleep(1000);
                     ProductMode mode = new ProductMode();
                     mode.setName("name"+finalI);
                     mode.setPrice(finalI);
+                    System.out.println("===================="+finalI);
                     return mode;
                 });
-//
-//                executorService.submit(()->{
-//                    System.out.println("====================");
-//                    Thread.sleep(1000);
-//                    ProductMode mode = new ProductMode();
-//                    mode.setName("name"+finalI);
-//                    mode.setPrice(finalI);
-//                    return mode;
-//                });
             }
             System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
             list.stream().forEach(callable -> retu.add(executorService.submit(callable)));
