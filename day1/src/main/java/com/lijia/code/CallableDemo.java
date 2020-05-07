@@ -68,7 +68,6 @@ public class CallableDemo {
         for (Future<ProductMode> model:
              list) {
             System.out.println(model.get());
-
         }
         factory.shutdowm();
     }
