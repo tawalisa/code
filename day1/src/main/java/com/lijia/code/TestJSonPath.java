@@ -12,7 +12,19 @@ import static com.jayway.jsonpath.Criteria.where;
 public class TestJSonPath {
     public static void main(String[] args) {
 //        testNumber();
-        testDate();
+//        testDate();
+
+        for(int i = 0 ; i < 200; i ++){
+            System.out.print("\""+i +"\",");
+        }
+//        OffsetDateTime offsetDateTime = OffsetDateTime.now();
+//        List valueAsList = new ArrayList<>();
+//        Map map1 = new LinkedHashMap();
+//        map1.put("MaximumValue",offsetDateTime);
+//        valueAsList.add(map1);
+//        Object ret = null;
+//        ret = JsonPath.parse(valueAsList).read("$[?]", Filter.filter(where("MaximumValue").gte(new Date())));
+//        System.out.println(ret);
     }
 
     private static void testDate() {
@@ -32,8 +44,8 @@ public class TestJSonPath {
         map1 = new LinkedHashMap();
         map1.put("MaximumValue",374);
         valueAsList.add(map1);
-
-        Object ret = JsonPath.parse(valueAsList).read("$[?]", Filter.filter(where("MaximumValue").gte(new Date())));
+        Object ret = null;
+        ret = JsonPath.parse(valueAsList).read("$[?]", Filter.filter(where("MaximumValue").gte(new Date())));
         System.out.println(ret);
         ret = JsonPath.parse(valueAsList).read("$[?]", Filter.filter(where("MaximumValue").gte(offsetDateTime)));
         System.out.println(ret);
