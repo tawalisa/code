@@ -32,10 +32,10 @@ public class Gradle2Maven {
             if(m.find()){
                 StringBuffer sb = new StringBuffer();
                 String format = "<dependency>\n" +
-                        "            <groupId>{1}</groupId>\n" +
-                        "            <artifactId>{2}</artifactId>\n" +
-                        "            <version>{3}</version>\n" +
-                        "            <scope>{4}</scope>\n" +
+                        "            <groupId>%s</groupId>\n" +
+                        "            <artifactId>%s</artifactId>\n" +
+                        "            <version>%s</version>\n" +
+                        "            <scope>%s</scope>\n" +
                         "        </dependency>";
                 System.out.println(String.format(format, m.group(2), m.group(3), m.group(4),m.group(1).contains("test")?"test":"compile"));
 //                sb.append(m.group(1)).append("===").append(m.group(2)).append("===").append(m.group(3)).append("===").append(m.group(4));
