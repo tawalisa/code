@@ -21,17 +21,20 @@ public class CommandThatFailsSilently extends HystrixCommand<String> {
         }
     }
 
-    @Override
-    protected String getFallback() {
-        return "fail";
-    }
+//    @Override
+//    protected String getFallback() {
+//        return "fail";
+//    }
 
     public static void main(String[] args) {
-        System.out.println(new CommandThatFailsSilently(false).execute());
+//        System.out.println(new CommandThatFailsSilently(true).execute());
+//        System.out.println(new CommandThatFailsSilently(false).execute());
         try{
             System.out.println(new CommandThatFailsSilently(true).execute());
-            System.out.println(new CommandThatFailsSilently(false).execute());
+//            System.out.println(new CommandThatFailsSilently(false).execute());
         }catch (Exception e){
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }
