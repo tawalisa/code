@@ -11,7 +11,9 @@ import java.time.format.DateTimeParseException;
 
 public class LocalTimeTest {
     public static void main(String[] args) throws Exception {
-        System.out.println(serialize("09:07:05.003233999"));
+        LocalTime result = convertToLocalTime("09:07:05.003001123");
+        System.out.println(result.toString());
+        System.out.println(serialize("09:07:05.003001"));
         System.out.println(LocalTime.now());
         System.out.println(serialize(LocalTime.now()));
     }
