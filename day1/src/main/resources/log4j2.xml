@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.thomsonreuters.enterpriselogging.log4j2">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--<PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=magenta, ERROR=red, WARN=yellow bold, INFO=white, DEBUG=green bold, TRACE=blue}"/>
+            -->
+            <JsonLayout>
+                <KeyValuePair key="additionalField1" value="constant value"/>
+                <KeyValuePair key="additionalField2" value="$${ctx:key}"/>
+            </JsonLayout>
+
+        </Console>
+    </Appenders>
+
+
+
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

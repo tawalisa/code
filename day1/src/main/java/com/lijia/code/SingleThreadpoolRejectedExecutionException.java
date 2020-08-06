@@ -1,5 +1,6 @@
 package com.lijia.code;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 
 /**
@@ -16,14 +17,20 @@ public class SingleThreadpoolRejectedExecutionException {
         try{
             while(true){
                 System.out.println("============================");
-                Executors.newSingleThreadExecutor().submit(()->{
+                CompletableFuture.supplyAsync(()->{
                     byte[] b = new byte[1024*1024*30];
                     System.out.println(Thread.currentThread().getName() + "==>>start");
                     System.out.println(Thread.currentThread().getName()+ "==>>end");
-                });
+                    return 1;
+                }, Executors.newSingleThreadExecutor());
+//                Executors.newSingleThreadExecutor().submit(()->{
+//                    byte[] b = new byte[1024*1024*30];
+//                    System.out.println(Thread.currentThread().getName() + "==>>start");
+//                    System.out.println(Thread.currentThread().getName()+ "==>>end");
+//                });
                 System.out.println("1111111111111111111111111111");
             }
-        }catch (Throwable e){
+        }catch (Exception e){
             e.printStackTrace();
         }
 
