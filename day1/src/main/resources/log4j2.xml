@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration packages="com.thomsonreuters.enterpriselogging.log4j2">
+
+    <DynamicThresholdUserFilter key="level" defaultThreshold="ERROR" onMatch="ACCEPT" onMismatch="NEUTRAL" />
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <!--<PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=magenta, ERROR=red, WARN=yellow bold, INFO=white, DEBUG=green bold, TRACE=blue}"/>
-            -->
-            <JsonLayout>
-                <KeyValuePair key="additionalField1" value="constant value"/>
-                <KeyValuePair key="additionalField2" value="$${ctx:key}"/>
-            </JsonLayout>
-
+            <PatternLayout pattern="%-5level %class{36} %M %msg%xEx%n"/>
         </Console>
     </Appenders>
-
-
-
-
     <Loggers>
-        <Root level="INFO">
-            <AppenderRef ref="Console"/>
+        <Logger name="com.lijia.code.LogLevel" level="ERROR" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Root level="debug">
+            <AppenderRef ref="Console" />
         </Root>
     </Loggers>
+<!--    <Appenders>-->
+<!--        <Console name="Console" target="SYSTEM_OUT">-->
+<!--            &lt;!&ndash;<PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=magenta, ERROR=red, WARN=yellow bold, INFO=white, DEBUG=green bold, TRACE=blue}"/>-->
+<!--            &ndash;&gt;-->
+<!--            <JsonLayout>-->
+<!--                <KeyValuePair key="additionalField1" value="constant value"/>-->
+<!--                <KeyValuePair key="additionalField2" value="$${ctx:key}"/>-->
+<!--            </JsonLayout>-->
+
+<!--        </Console>-->
+<!--    </Appenders>-->
+
+
+
+
+<!--    <Loggers>-->
+<!--        <Root level="INFO">-->
+<!--            <AppenderRef ref="Console"/>-->
+<!--        </Root>-->
+<!--    </Loggers>-->
 </Configuration>

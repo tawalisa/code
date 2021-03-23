@@ -20,7 +20,7 @@ import java.util.function.Supplier;
 public class TimeLimiterTest1 {
 
     public static void main(String[] args) {
-        RetryConfig retryConfig = RetryConfig.custom().maxAttempts(1)
+        RetryConfig retryConfig = RetryConfig.custom().maxAttempts(3)
                 .retryOnException(throwable -> {
                     throwable.printStackTrace();
                     return true;
@@ -51,6 +51,7 @@ public class TimeLimiterTest1 {
     private static Future<Integer> create() {
         return CompletableFuture.supplyAsync(() -> {
             try {
+                System.out.println(Thread.currentThread().getName());
                 Thread.sleep(1000* 10);
             } catch (InterruptedException e) {
                 e.printStackTrace();

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
@@ -14,7 +16,12 @@ import ch.qos.logback.core.util.FileUtil;
 
 public class Test7 {
 
-	public static void main(String[] args) throws IOException {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		CountDownLatch countDownLatch = new CountDownLatch(1);
+		countDownLatch.await(1L, TimeUnit.SECONDS);
+
+
 //		List<Integer> list = new ArrayList();
 //		list.add(1);
 //		list.add(2);
